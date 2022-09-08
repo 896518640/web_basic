@@ -3,7 +3,7 @@
 
 如果不存在公共前缀，返回空字符串 ""。
 */
-const strs = ["flower", "flow", "flight",'fff']
+const strs = ["flower", "flow", "flight"]
 var longestCommonPrefix = function (strs) {
     // const len = strs.length
     // // console.log(len)
@@ -31,17 +31,33 @@ var longestCommonPrefix = function (strs) {
     //         console.log(resArr[i][j])
     //     }
     // }
-    let re = ''
-    if(!strs.length)return re
-    // 表示第i位字符
+    // ways1 :
+    // let re = ''
+    // if(!strs.length)return re
+    // // 表示第i位字符
+    // for (let i = 0; i < strs[0].length; i++) {
+    //     // 表示第j个字符串
+    //     for (let j = 1; j < strs.length; j++) {
+    //         // 说明没有公共前缀
+    //         if(strs[j][i]!=strs[0][i]) return re
+    //     }
+    //     re += strs[0][i]
+    // }
+    // return re
+
+    // ways2 :
+    let result = ''
+    // 公共开头
+    let pub = ''
+    // 遍历第一个字符串 的第i位
     for (let i = 0; i < strs[0].length; i++) {
-        // 表示第j个字符串
-        for (let j = 1; j < strs.length; j++) {
-            // 说明没有公共前缀
-            if(strs[j][i]!=strs[0][i]) return re
+        // pub 代表 开头字母
+        pub += strs[0][i]
+        // 以第一个字符串作为参照 
+        if (strs.every(str => str.startsWith(pub))) {
+            result = pub 
         }
-        re += strs[0][i]
     }
-    return re
+    return result
 };
 console.log(longestCommonPrefix(strs))
