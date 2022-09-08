@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function setWatermark(str) {
+            let id = 'zjw_0123456789'
+            if (document.getElementById(id) !== null) {
+                document.body.removeChild(document.getElementById(id))
+            }
+            let can = document.createElement('canvas')
+            can.width = 140
+            can.height = 90
+            let cans = can.getContext('2d')
+            cans.rotate(-20 * Math.PI / 180)
+            cans.font = '18px Vedana'
+            cans.fillStyle = 'rgba(200, 200, 200, 0.2)'
+            cans.textAlign = 'left'
+            cans.textBaseline = 'Middle'
+            cans.fillText(str, can.width / 100, can.height / 2)
+
+            let div = document.createElement('div')
+            div.id = id
+            div.style.pointerEvents = 'none'
+            div.style.top = '0'
+            div.style.left = '0'
+            div.style.position = 'fixed'
+            div.style.zIndex = '4'
+            div.style.width = '100%'
+            div.style.height = '100%'
+            console.log(div)
+            div.style.background = 'url(' + can.toDataURL('image/png') + ') left top repeat'
+            document.body.appendChild(div)
+        }
+        setWatermark('888')
+    </script>
+</body>
+
+</html>
