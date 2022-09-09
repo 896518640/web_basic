@@ -4,8 +4,7 @@
     "webpack": "^5.74.0"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "./node_modules/.bin/live-server --port=7777"
+    "dev": " ./node_modules/.bin/live-server --port=8888 "
   },
   "devDependencies": {
     "webpack-cli": "^4.10.0"
