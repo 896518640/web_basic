@@ -1,0 +1,17 @@
+{
+  "dependencies": {
+    "live-server": "^1.2.2",
+    "webpack": "^5.74.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "./node_modules/.bin/live-server --port=7777"
+  },
+  "devDependencies": {
+    "webpack-cli": "^4.10.0"
+  },
+  "name": "ES6-Components",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT"
+}
