@@ -1,24 +1,20 @@
 // 导入http模块
 const http = require('http')
-// 导入 fs 模块
-const fs = require('fs')
+
+//  引入路由
+const router = require('./router/index.js')
+
 // 创建服务器
 //获取到服务器的实例对象
 const server = http.createServer()
+
+// 监听8080 端口
 server.listen(8080, function () {
     console.log('8080 run ~')
 })
 
 server.on('request', (req, res) => {
-    // console.log(req.url)
-    if (req.url === '/index') {
-        console.log('访问首页')
-        fs.readFile('./static/index.html', 'utf8', (err, data) => {
-            console.log(data)
-            res.write(data)
-            res.end()
-        })
-    }
+    router(req, res)
 })
 
 
