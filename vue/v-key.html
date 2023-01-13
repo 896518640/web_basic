@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <input type="text" v-model="name">
+        <button @click="addItem">点我添加</button>
+        <ul>
+            <li v-for="item in list">
+                <input type="checkbox">{{item.name}}
+            </li>
+        </ul>
+    </div>
+</body>
+<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+
+<script>
+    const { createApp,ref,reactive } = Vue
+
+    createApp({
+        setup(){
+            let list = reactive([
+                {id: 1, name: '张三'},
+                {id: 2, name: '李四'},
+                {id: 3, name: '王二'},
+            ])
+            let name = ref('')
+            let id = ref(3)
+            
+            function addItem(){
+                console.log(list,name)
+                list.unshift(
+                    {
+                    id: ++id.value,
+                    name: name.value
+                    }
+                )
+                name.value = ''
+            }
+            return {
+                list,
+                name,
+                addItem
+            }
+        }
+    }).mount('#app')
+</script>
+</html>

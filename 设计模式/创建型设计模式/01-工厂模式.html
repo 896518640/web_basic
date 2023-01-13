@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 工厂模式 就是写一个方法 只需要调用这个方法 就能拿到你想要的对象
+        function Factory(){
+            switch(type){
+                case 'type1':
+                    return new Type1();
+                case 'type2': 
+                    return new Type2();
+                case 'type3':
+                    return new Type3()
+            }
+        }
+        function Type1(){}
+        function Type2(){}
+        function Type3(){}
+
+
+        // 例子
+        (function(){
+            function infoPop(){
+
+            }
+            function confirmPop(){
+
+            }
+            function cancelPop(){
+
+            }
+            //  创建3个消息弹窗3个确认3个取消 分别有不同的颜色
+            function pop(type,content,color){
+                if(this instanceof pop){
+                    let s = new this[type](content,color)
+                }else{
+                    return new pop(type,content,color)
+                }
+                switch (type){
+                    case 'infoPop':
+                        return new infoPop(content,color);
+                    case 'confirmPop':
+                        return new confirmPop(content,color);
+                    case 'cancelPop':
+                        return new cancelPop(content,color);
+                }
+            }
+            window.pop = pop
+        })()
+
+        pop('infoPop','hello','red')
+    </script>
+</body>
+</html>
