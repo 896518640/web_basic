@@ -1,7 +1,8 @@
-import Pina from '@/components/usePinia'
-console.log('pina', Pina)
+import Pina from '@/components/usePinia';
+import { defineComponent } from 'vue';
+import { RouterView } from 'vue-router';
+console.log('pina', Pina);
 // ways 1
-import { defineComponent } from "vue";
 
 // export default defineComponent({
 //   setup(props){
@@ -9,7 +10,7 @@ import { defineComponent } from "vue";
 //       return <>
 //       <div class="app-container">
 //         通过setup 函数编写
-      
+
 //       </div>
 //     </>
 //     }
@@ -25,16 +26,15 @@ import { defineComponent } from "vue";
 //   </>
 // }
 
-
 // ways 3
 export default defineComponent({
-
-  render (){
-    return <>
-      <div class="app-container">
-          通过render h函数 书写
-          <Pina/>
-      </div>
-    </>
-  }
-})
+    render() {
+        return (
+            <>
+                <div class="app-container">
+                    <RouterView />
+                </div>
+            </>
+        );
+    },
+});

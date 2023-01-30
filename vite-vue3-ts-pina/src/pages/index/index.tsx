@@ -1,11 +1,14 @@
-import { defineComponent } from "vue";
-
+import { defineComponent } from 'vue';
+import Pina from '@/components/usePinia';
 export default defineComponent({
-    setup(){
+    setup() {
         return () => {
-            return <div class='container'>
-                我是首页
-            </div>
-        }
-    }
-})
+            return (
+                <div class="container">
+                    <div className="title">我是首页</div>
+                    <Pina></Pina>
+                </div>
+            );
+        };
+    },
+});

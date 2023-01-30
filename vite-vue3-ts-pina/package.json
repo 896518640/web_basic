@@ -14,10 +14,12 @@
   "dependencies": {
     "@typescript-eslint/eslint-plugin": "^5.48.1",
     "@typescript-eslint/parser": "^5.48.1",
+    "@vueuse/core": "^9.10.0",
     "eslint": "^8.31.0",
     "eslint-plugin-vue": "^9.8.0",
     "pinia": "^2.0.28",
-    "vue": "^3.2.45"
+    "vue": "^3.2.45",
+    "vue-router": "^4.1.6"
   },
   "devDependencies": {
     "@types/node": "^18.11.18",
