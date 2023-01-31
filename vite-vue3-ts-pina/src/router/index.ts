@@ -17,6 +17,22 @@ const routes: Array<RouteRecordRaw> = [
         },
         component: () => import('@/pages/vueUse'),
     },
+    {
+        path: '/watch',
+        name: 'watch',
+        meta: {
+            title: 'watch',
+        },
+        component: () => import('@/pages/watch'),
+    },
+    {
+        path: '/ts',
+        name: 'ts',
+        meta: {
+            title: 'ts',
+        },
+        component: () => import('@/pages/ts'),
+    },
 ];
 
 const router = createRouter({

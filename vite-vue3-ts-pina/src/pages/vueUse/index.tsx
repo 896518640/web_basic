@@ -1,16 +1,17 @@
 import { defineComponent } from 'vue';
 import { useMouse } from '@vueuse/core';
-defineComponent({
+const { x, y, sourceType } = useMouse();
+// console.log('x y', x, y, sourceType);
+export default defineComponent({
     name: 'VueUse',
     setup() {
-        const { x, y } = useMouse();
-        console.log('x y', x, y);
-        return (
+        return () => (
             <>
-                <h1> 测试 vueues 的鼠标坐标 </h1>
+                <h1> 测试 vueuse 的鼠标坐标 </h1>
                 <h3>
-                    Mouse:x {x} y {y}
+                    Mouse: x {x} y {y}
                 </h3>
+                <p>type: {sourceType}</p>
             </>
         );
     },

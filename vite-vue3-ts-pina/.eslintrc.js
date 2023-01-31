@@ -1,4 +1,4 @@
-module.exports =  {
+module.exports = {
     parser: 'vue-eslint-parser',
 
     parserOptions: {
@@ -6,17 +6,15 @@ module.exports =  {
         ecmaVersion: 2020,
         sourceType: 'module',
         ecmaFeature: {
-            jsx:true
-        }
+            jsx: true,
+        },
     },
 
     extends: [
         'plugin:vue/vue3-recommended',
         'plugin:@typescript-eslint/recommended',
         'prettier',
-        'plugin:prettier/recommended'
+        'plugin:prettier/recommended',
     ],
-    rules: {
-        
-    }
-}
+    rules: {},
+};
