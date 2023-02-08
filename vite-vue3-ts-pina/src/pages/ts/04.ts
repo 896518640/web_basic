@@ -83,7 +83,7 @@ class Person4 extends Person3 {
 }
 
 // 6. protected
-// protected 受保护的 类本身内部和继承他的子类内部非static方法内部可以访问 实例不能访问
+// protected 受保护的 类本身和子类内部非static方法内部可以访问 实例不能访问
 
 // 7. static
 // static 是静态属性 可以理解为是类上的一些常量 只有类本身及其子类可以使用 实例不能访问
