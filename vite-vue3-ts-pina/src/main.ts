@@ -1,10 +1,9 @@
 import { createApp } from 'vue';
-import './style.css';
-import App from './App';
+import App from './App.vue';
 import store from './store';
 import router from '@/router';
 import Antd from 'ant-design-vue';
-import 'ant-design-vue';
+import 'ant-design-vue/dist/antd.css';
 
 // 创建vue 实例
 const app = createApp(App);
