@@ -12,10 +12,10 @@ export default defineConfig({
         },
     },
     server: {
-        port: 8280,
+        port: 9999,
         hmr: {
             host: '127.0.0.1',
-            port: 8280,
+            port: 9999,
         },
         // 设置https 代理
         proxy: {

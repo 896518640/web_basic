@@ -7,25 +7,14 @@
                 theme="dark"
                 mode="inline"
             >
-                <a-menu-item key="index">
+                <a-menu-item key="/index">
                     <pie-chart-outlined />
                     <span>首页</span>
                 </a-menu-item>
-                <a-menu-item key="2">
+                <a-menu-item key="/vueUse">
                     <desktop-outlined />
                     <span>vueUse</span>
                 </a-menu-item>
-                <a-sub-menu key="sub1">
-                    <template #title>
-                        <span>
-                            <user-outlined />
-                            <span>User</span>
-                        </span>
-                    </template>
-                    <a-menu-item key="3">Tom</a-menu-item>
-                    <a-menu-item key="4">Bill</a-menu-item>
-                    <a-menu-item key="5">Alex</a-menu-item>
-                </a-sub-menu>
                 <a-sub-menu key="sub2">
                     <template #title>
                         <span>
@@ -36,7 +25,7 @@
                     <a-menu-item key="6">Team 1</a-menu-item>
                     <a-menu-item key="8">Team 2</a-menu-item>
                 </a-sub-menu>
-                <a-menu-item key="9">
+                <a-menu-item key="watch">
                     <file-outlined />
                     <span>watch</span>
                 </a-menu-item>
@@ -69,23 +58,29 @@
 import {
     PieChartOutlined,
     DesktopOutlined,
-    UserOutlined,
     TeamOutlined,
     FileOutlined,
 } from '@ant-design/icons-vue';
 import { defineComponent, ref, watch } from 'vue';
+import { useRouter } from 'vue-router';
 export default defineComponent({
     components: {
         PieChartOutlined,
         DesktopOutlined,
-        UserOutlined,
         TeamOutlined,
         FileOutlined,
     },
     setup() {
-        const selectedKeys = ref<string[]>(['1']);
+        const selectedKeys = ref<string[]>(['/index']);
+        const router = useRouter();
+        console.log(router, 'router');
         watch(selectedKeys, () => {
-            console.log('change');
+            console.log('change', selectedKeys.value);
+            const keys = selectedKeys.value[0];
+            // debugger;
+            router.push({
+                path: keys,
+            });
         });
         return {
             selectedKeys,
@@ -94,7 +89,6 @@ export default defineComponent({
     data() {
         return {
             collapsed: ref<boolean>(false),
-            // selectedKeys: ref<string[]>(['1']),
         };
     },
 });

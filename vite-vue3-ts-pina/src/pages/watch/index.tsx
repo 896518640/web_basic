@@ -60,9 +60,9 @@ export default defineComponent({
             console.log('情景四：数据源为响应式对象', newVal); //输出：{name: '李四'}
         });
         //情景五：数据源为'张三'
-        watch(person.value.name, (newVal) => {
-            console.log('情景五：数据源为 张三 ', newVal); //非法数据源，监听不到且控制台告警
-        });
+        // watch(person.value.name, (newVal) => {
+        //     console.log('情景五：数据源为 张三 ', newVal); //非法数据源，监听不到且控制台告警
+        // });
         //情景六：数据源为getter函数，返回基本类型
         watch(
             () => person.value.name,
