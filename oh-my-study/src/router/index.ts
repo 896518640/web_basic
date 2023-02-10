@@ -1,58 +1,27 @@
-import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router';
+import { createRouter, createWebHashHistory, RouteRecordRaw } from 'vue-router';
+import Home from '@/pages/index/index.vue';
 
 const routes: Array<RouteRecordRaw> = [
     {
-        path: '/',
-        name: 'Index',
+        path: '/home',
+        name: 'Home',
         meta: {
             title: '首页',
         },
-        component: () => import('@/pages/index'),
+        component: Home,
     },
     {
-        path: '/index',
-        name: 'Index',
+        path: '/navigation',
+        name: 'Navigation',
         meta: {
-            title: '首页',
+            title: '前端导航',
         },
-        component: () => import('@/pages/index'),
-    },
-    {
-        path: '/vueUse',
-        name: 'VueUse',
-        meta: {
-            title: 'vueUse',
-        },
-        component: () => import('@/pages/vueUse'),
-    },
-    {
-        path: '/watch',
-        name: 'watch',
-        meta: {
-            title: 'watch',
-        },
-        component: () => import('@/pages/watch'),
-    },
-    {
-        path: '/ts',
-        name: 'ts',
-        meta: {
-            title: 'ts',
-        },
-        component: () => import('@/pages/ts'),
-    },
-    {
-        path: '/shake',
-        name: '摇一摇',
-        meta: {
-            title: 'shake',
-        },
-        component: () => import('@/pages/shake/shakeDemo.vue'),
+        component: () => import('@/pages/navigation/index.vue'),
     },
 ];
 
 const router = createRouter({
-    history: createWebHistory(),
+    history: createWebHashHistory(),
     routes,
 });
 console.log(routes);
