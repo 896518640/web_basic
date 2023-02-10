@@ -68,8 +68,12 @@
                             </template>
                         </a-switch>
                     </div>
-                    <div class="menu-item">前端导航</div>
-                    <div class="menu-item">书法</div>
+                    <div class="menu-item">
+                        <router-link to="navigation"> 前端导航 </router-link>
+                    </div>
+                    <div class="menu-item">
+                        <router-link to="home"> 书法 </router-link>
+                    </div>
                     <div class="menu-item">文艺</div>
                     <div class="menu-item">教育</div>
                     <div class="menu-item">心得</div>
@@ -78,8 +82,9 @@
             </div>
         </div>
         <div className="layout-main">
-            <div className="layout-sidebar">sidebar</div>
-            <div className="layout-content">main</div>
+            <RouterView />
+            <!-- <div className="layout-sidebar">sidebar</div>
+            <div className="layout-content">main</div> -->
         </div>
         <div className="layout-footer">footer</div>
     </div>
