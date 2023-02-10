@@ -18,6 +18,14 @@ const routes: Array<RouteRecordRaw> = [
         },
         component: () => import('@/pages/navigation/index.vue'),
     },
+    {
+        path: '/demo',
+        name: 'Demo',
+        meta: {
+            title: '小案例',
+        },
+        component: () => import('@/pages/demo/index.vue'),
+    },
 ];
 
 const router = createRouter({

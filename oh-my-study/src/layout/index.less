@@ -29,6 +29,10 @@
     --sidebar-background: var(--sidebar-light);
 }
 
+.layout-container {
+    overflow: hidden;
+}
+
 .layout-header{
     transition: all .3s;
     width: 100%;
@@ -40,6 +44,9 @@
     border-bottom: 1px solid var(--vt-c-divider-dark);
     display: flex;
     align-items: center;
+    z-index: 10;
+    left:0;
+    top: 0;
     .left {
         flex:0 0 20%;
         display: flex;
@@ -119,6 +126,19 @@
     color: var(--theme-color);
     border-top: 1px solid var(--vt-c-divider-dark);
     background: var(--theme-background);
+    overflow: hidden;
+    z-index:10;
+    // position: relative;
+    // &::after {
+    //     content: '';
+    //     position: absolute;
+    //     top: 0px;
+    //     left: 0;
+    //     right: 0;
+    //     bottom: 0;
+    //     backdrop-filter: blur(150px);
+    //     z-index: 1;
+    // }
   }
 
 //   .ant-menu.ant-menu-dark{

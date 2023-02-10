@@ -3,9 +3,7 @@ import Layout from '@/layout/Layout.vue';
 </script>
 
 <template>
-    <div class="container">
-        <Layout />
-    </div>
+    <Layout />
 </template>
 
 <style scoped lang="less">

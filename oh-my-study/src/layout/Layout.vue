@@ -7,6 +7,9 @@
             <div class="right">
                 <div class="menu-container">
                     <div class="menu-item">
+                        <router-link to="home"> 首页 </router-link>
+                    </div>
+                    <div class="menu-item">
                         <a-switch
                             v-model:checked="themeValue.theme"
                             checked-value="dark"
@@ -72,9 +75,8 @@
                         <router-link to="navigation"> 前端导航 </router-link>
                     </div>
                     <div class="menu-item">
-                        <router-link to="home"> 书法 </router-link>
+                        <router-link to="demo"> 案例 </router-link>
                     </div>
-                    <div class="menu-item">文艺</div>
                     <div class="menu-item">教育</div>
                     <div class="menu-item">心得</div>
                     <div class="menu-item">user</div>
@@ -97,18 +99,20 @@ type themeType = 'dark' | 'light';
 
 const current = ref<string[]>(['mail']);
 const themeValue = useThemeStore();
-document.body.className = themeValue.theme;
+document.body.classList.toggle(themeValue.theme);
 
 function changeTheme(theme: themeType) {
     console.log('changeTheme', theme);
     if (theme === 'dark') {
         console.log('dark');
-        document.body.className = theme;
+        document.body.classList.toggle(theme);
+        document.body.classList.remove('light');
         themeValue.updateTheme(theme);
     }
     if (theme === 'light') {
         console.log('pink');
-        document.body.className = theme;
+        document.body.classList.toggle(theme);
+        document.body.classList.remove('dark');
         themeValue.updateTheme(theme);
     }
 }
