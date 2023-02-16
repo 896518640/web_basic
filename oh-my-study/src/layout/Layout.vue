@@ -92,12 +92,9 @@
     </div>
 </template>
 <script setup lang="ts">
-import { ref } from 'vue';
 import { RouterView } from 'vue-router';
 import { useThemeStore } from '@/store/theme';
 type themeType = 'dark' | 'light';
-
-const current = ref<string[]>(['mail']);
 const themeValue = useThemeStore();
 document.body.classList.toggle(themeValue.theme);
 

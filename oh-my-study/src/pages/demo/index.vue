@@ -10,7 +10,7 @@
             theme="dark"
             @click="handleClick"
         >
-            <a-sub-menu key="sub1" @titleClick="titleClick">
+            <a-sub-menu key="sub1" @title-click="titleClick">
                 <template #icon>
                     <MailOutlined />
                 </template>
@@ -28,7 +28,7 @@
                     <a-menu-item key="4">Option 4</a-menu-item>
                 </a-menu-item-group>
             </a-sub-menu>
-            <a-sub-menu key="sub2" @titleClick="titleClick">
+            <a-sub-menu key="sub2" @title-click="titleClick">
                 <template #icon>
                     <AppstoreOutlined />
                 </template>
@@ -57,7 +57,12 @@
 
 <script lang="ts" setup>
 import { ref, watch } from 'vue';
-
+import {
+    MailOutlined,
+    QqOutlined,
+    AppstoreOutlined,
+    SettingOutlined,
+} from '@ant-design/icons-vue';
 const selectedKeys = ref<string[]>(['1']);
 const openKeys = ref<string[]>(['sub1']);
 const handleClick = (e: Event) => {
