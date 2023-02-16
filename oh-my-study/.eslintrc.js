@@ -16,5 +16,7 @@ module.exports = {
         'prettier',
         'plugin:prettier/recommended',
     ],
-    rules: {},
+    rules: {
+        'vue/multi-word-component-names': 'off',
+    },
 };

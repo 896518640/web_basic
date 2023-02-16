@@ -39,13 +39,18 @@ function getPermission() {
     }
 }
 function handler() {
-    window.addEventListener(
-        'devicemotion',
-        () => {
-            (document.querySelector('.main') as Element).innerHTML = '我在摇';
-        },
-        false,
-    );
+    if (window.DeviceMotionEvent) {
+        window.addEventListener(
+            'devicemotion',
+            () => {
+                (document.querySelector('.main') as Element).innerHTML =
+                    '我在摇';
+            },
+            false,
+        );
+    } else {
+        alert('该浏览器暂不支持摇一摇功能');
+    }
 }
 function loadConfig() {
     if (window.DeviceMotionEvent) {
