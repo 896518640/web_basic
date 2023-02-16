@@ -10,41 +10,33 @@
             theme="dark"
             @click="handleClick"
         >
-            <a-sub-menu key="sub1" @title-click="titleClick">
+            <a-sub-menu key="demo1" @title-click="titleClick">
                 <template #icon>
                     <MailOutlined />
                 </template>
-                <template #title>Navigation One</template>
+                <template #title>1</template>
                 <a-menu-item-group key="g1">
                     <template #icon>
                         <QqOutlined />
                     </template>
-                    <template #title>Item 1</template>
-                    <a-menu-item key="1">Option 1</a-menu-item>
+                    <template #title>1</template>
+                    <a-menu-item key="1">web worker</a-menu-item>
                     <a-menu-item key="2">Option 2</a-menu-item>
                 </a-menu-item-group>
-                <a-menu-item-group key="g2" title="Item 2">
-                    <a-menu-item key="3">Option 3</a-menu-item>
-                    <a-menu-item key="4">Option 4</a-menu-item>
-                </a-menu-item-group>
             </a-sub-menu>
-            <a-sub-menu key="sub2" @title-click="titleClick">
+            <a-sub-menu key="demo2" @title-click="titleClick">
                 <template #icon>
                     <AppstoreOutlined />
                 </template>
-                <template #title>Navigation Two</template>
+                <template #title>2</template>
                 <a-menu-item key="5">Option 5</a-menu-item>
                 <a-menu-item key="6">Option 6</a-menu-item>
-                <a-sub-menu key="sub3" title="Submenu">
-                    <a-menu-item key="7">Option 7</a-menu-item>
-                    <a-menu-item key="8">Option 8</a-menu-item>
-                </a-sub-menu>
             </a-sub-menu>
-            <a-sub-menu key="sub4">
+            <a-sub-menu key="demo3" @title-click="titleClick">
                 <template #icon>
                     <SettingOutlined />
                 </template>
-                <template #title>Navigation Three</template>
+                <template #title>3</template>
                 <a-menu-item key="9">Option 9</a-menu-item>
                 <a-menu-item key="10">Option 10</a-menu-item>
                 <a-menu-item key="11">Option 11</a-menu-item>
@@ -52,29 +44,37 @@
             </a-sub-menu>
         </a-menu>
     </div>
-    <div class="layout-content">23333322</div>
+    <div class="layout-content">
+        <RouterView></RouterView>
+    </div>
 </template>
 
 <script lang="ts" setup>
 import { ref, watch } from 'vue';
+import { Router, useRouter, RouterView } from 'vue-router';
 import {
     MailOutlined,
     QqOutlined,
     AppstoreOutlined,
     SettingOutlined,
 } from '@ant-design/icons-vue';
-const selectedKeys = ref<string[]>(['1']);
-const openKeys = ref<string[]>(['sub1']);
+const selectedKeys = ref<string[]>(['demo1']);
+const openKeys = ref<string[]>(['demo1']);
+const router: Router = useRouter();
 const handleClick = (e: Event) => {
     console.log('click', e);
+    const path = (e as any).keyPath.join('/');
+    router.push({
+        path: `/demo/${path}`,
+    });
 };
 const titleClick = (e: Event) => {
     console.log('titleClick', e);
 };
 watch(
-    () => openKeys,
+    () => selectedKeys,
     (val) => {
-        console.log('openKeys', val);
+        console.log('selectedKeys', val.value);
     },
 );
 </script>
