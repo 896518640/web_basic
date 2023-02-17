@@ -17,7 +17,7 @@ function singleTest() {
     }
     console.time('单线程执行时间');
     for (let i = 0; i < number; i++) {
-        const res = fb(45);
+        const res = fb(40);
         console.log({
             data: res,
             name: 'single test',
@@ -30,12 +30,11 @@ function workerTest() {
     console.log('%c 开始多线程测试', 'color:#fff;background:#00897b');
     const workerList = [];
     for (let i = 0; i < number; i++) {
-        const workerItem = new Promise((resolve, reject) => {
+        const workerItem = new Promise((resolve) => {
             const myWorker = new worker();
-
             myWorker.postMessage({
                 function: 'fb',
-                data: 45,
+                data: 40,
             });
             myWorker.onmessage = (e) => {
                 resolve(e.data);

@@ -1,5 +1,6 @@
 <template>
     <div class="">
+        <!-- <div class="app">hello world</div> -->
         <Component :is="curModule"></Component>
     </div>
 </template>
@@ -20,26 +21,23 @@ let curModule: any = ref('');
 // 动态加载所有模块
 function loadModule() {
     return new Promise(async (resolve, reject) => {
-        try {
-            for (const mod in modules) {
-                let module: any = await modules[mod]();
-                for (const key in module) {
-                    routes.push({
-                        path: '/' + key.toLowerCase(),
-                        name: key.toLowerCase(),
-                        component: module[key],
-                    });
-                }
+        for (const mod in modules) {
+            let module: any = await modules[mod]();
+            for (const key in module) {
+                routes.push({
+                    path: '/' + key.toLowerCase(),
+                    name: key.toLowerCase(),
+                    component: module[key],
+                });
             }
-            resolve(routes);
-        } catch (error) {
-            reject(error);
         }
+        resolve(routes);
     });
 }
 
 // 查找模块
 function findModule(path: any) {
+    console.log(routes);
     routes.forEach((item: any) => {
         if (item.component.__name.includes(path)) {
             curModule.value = item.component;
