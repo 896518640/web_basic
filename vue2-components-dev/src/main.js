@@ -1,8 +1,10 @@
 import Vue from 'vue'
 import App from './App.vue'
 import router from './Lrouter/index'
+import store from './Lstore'
+
 new Vue({
-  el: '#app',
+  router,
+  store,
   render: (h) => h(App),
-  router
-}).$mount(App)
+}).$mount('#app')

@@ -1,7 +1,7 @@
 import VueRouter from './Lvue-router';
 import Home from '../pages/home/index.vue';
 import Vue from 'vue'
-
+// use 方法将来会调用install方法
 Vue.use(VueRouter)
 
 const routes = [
