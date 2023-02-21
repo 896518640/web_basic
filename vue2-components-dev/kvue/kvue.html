@@ -1,0 +1,30 @@
+<div id="app">
+    <p>{{counter}}</p>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/vue@2.7.14/dist/vue.js"></script>
+<script>
+// 1. 数据驱动 数据响应式 监听数据变化并在视图中更新
+// Object.defineProperty()
+// Proxy
+
+// 2. 编译:   渲染函数 模版引擎
+
+// 模板引擎
+// 插值 {{}}
+// 指令 v-bind v-on v-model v-for v-if
+
+// 渲染 如何将莫办转换为 html
+// 模板 => vdom => dom
+const app = new Vue({
+    el:'#app',
+    data(){
+        return {
+            counter: 0
+        }
+    },
+})
+setTimeout(()=> {
+    app.counter ++
+},1000)
+
+</script>

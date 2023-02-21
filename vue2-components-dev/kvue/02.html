@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app"></div>
+</body>
+<script>
+function defineReactive(obj,key,val) {
+    // 属性拦截
+    Object.defineProperty(obj,key,{
+        get(){
+            console.log('get',key)
+            return val
+        },
+        set(newVal){
+            if(newVal!==val) {
+                console.log('set', key)
+                // 通知视图更新
+                update()
+                val = newVal
+            }
+        }
+    })
+}
+let obj = {}
+// 对数据进行响应式处理
+defineReactive(obj,'foo','')
+obj.foo = new Date().toLocaleTimeString()
+
+// 更新函数 描述了视图的内容
+// 1. 更新函数不应该自己写 编译器将模板转换出来的
+// 2. 全量更新 更新函数能够精确定位具体dom元素 或者利用vdom 比对得到dom操作
+function update() {
+    console.log('通知视图去更新')
+    document.querySelector('#app').innerHTML = obj.foo
+}
+setInterval(()=> {
+    obj.foo =  new Date().toLocaleTimeString()
+},1000)
+</script>
+</html>
