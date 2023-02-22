@@ -1,5 +1,8 @@
 <div id="app">
-    <p>{{counter}}</p>
+    <p v-if="counter" name="sda">{{counter}}</p>
+    <p v-if="counter" name="sda">{{counter}}</p>
+    <div v-text="text">v-text </div>
+    <div v-html="html">v-html</div>
 </div>
 <script src="kvue.js"></script>
 <script>
@@ -18,11 +21,13 @@
 const app = new Vue({
     el:'#app',
     data:{
-        counter: 0
+        counter: 0,
+        text: '我是 v- text 解析的内容',
+        html: "<p style='color:red'>我是 v-html</p>"
     },
 })
 setInterval(()=> {
-    app.counter ++
+    app.counter+= Math.random()*100
 },5000)
 
 </script>
