@@ -22,6 +22,7 @@
                     <template #title>1</template>
                     <a-menu-item key="1">web worker</a-menu-item>
                     <a-menu-item key="2">Option 2</a-menu-item>
+                    <a-menu-item key="3">Option 2</a-menu-item>
                 </a-menu-item-group>
             </a-sub-menu>
             <a-sub-menu key="demo2" @title-click="titleClick">

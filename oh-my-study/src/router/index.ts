@@ -37,6 +37,14 @@ const routes: Array<RouteRecordRaw> = [
             },
         ],
     },
+    {
+        path: '/study',
+        name: 'Study',
+        meta: {
+            title: '前端导航',
+        },
+        component: () => import('@/pages/study/index.vue'),
+    },
 ];
 
 const router = createRouter({
