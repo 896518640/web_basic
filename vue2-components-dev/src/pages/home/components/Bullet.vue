@@ -3,7 +3,7 @@
         <div ref="bullets" class="wrapper">
             <div v-for="(item,index) in items" :key="index" class="bullet-screen">
                 <div class="screen">
-                 恭喜 <span class="name">{{ item.name }}</span> 获得 {{ item.price }}元现金红包
+                  恭喜 <span class="name">{{ item.name }}</span> 获得 {{ item.price }}元现金红包
                 </div>
             </div>
         </div>
@@ -73,7 +73,7 @@
               scrollLen = index* 58
   
               Array.from(bullets).forEach((bullet)=> {
-                bullet.style.transform = `translateY(-${scrollLen}px)`
+                bullet.style.transform = `translateY(-${scrollLen/32}rem)`
               })
               toOpacity(bullets[index],bullets[index+1])
             };
@@ -82,10 +82,10 @@
             this.timer = setInterval(()=> {
               if(index >= bullets.length-2) {
                 scrollLen=0
-                index =0
+                index=0
               }
               scrollOnce.call(this,index++)
-            },duration*2000)
+            }, duration*2000)
         },
     },
   };
@@ -125,9 +125,13 @@
     letter-spacing: 0;
     line-height: 48px;
     display: flex;
+    height: 48px;
+    white-space: nowrap;
   }
   .name {
     max-width: 180px;
+    height: 48px;
+    line-height: 48px;
     white-space: nowrap;
     text-overflow: ellipsis;
     overflow: hidden;
