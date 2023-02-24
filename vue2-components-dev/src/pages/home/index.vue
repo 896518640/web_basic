@@ -5,7 +5,7 @@
         <Bullet></Bullet>
       </div>
       <div class="component-item">
-        <RedPacket></RedPacket>
+        <RedPacket model="already" :insureState="true" :amount="8.88"></RedPacket>
       </div>
       <div class="component-item"></div>
       <div class="component-item"></div>
@@ -18,10 +18,15 @@
 
 <script>
 import Bullet from './components/Bullet.vue';
-import RedPacket from './components/redPacket.vue'
+import RedPacket from './components/RedPacket.vue'
 export default {
 components: {
-  Bullet,RedPacket
+  Bullet,
+  RedPacket
+},
+created() {
+  console.log(Bullet)
+  console.log(RedPacket)
 }
 }
 </script>
@@ -35,7 +40,7 @@ components: {
 }
 .component-item {
   flex: 0 0 33%;
-  height: 400px;
+  height: 1000px;
   border: 1px solid #ddd;
   position: relative;
 }
