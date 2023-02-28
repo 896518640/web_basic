@@ -59,6 +59,7 @@ export function lifecycleMixin (Vue: Class<Component>) {
   Vue.prototype._update = function (vnode: VNode, hydrating?: boolean) {
     const vm: Component = this
     const prevEl = vm.$el
+    // 上次计算的虚拟dom 初始化的时候是没有的
     const prevVnode = vm._vnode
     const restoreActiveInstance = setActiveInstance(vm)
     vm._vnode = vnode
@@ -188,6 +189,7 @@ export function mountComponent (
     }
   } else {
     updateComponent = () => {
+      // 首先执行 render => vdom
       vm._update(vm._render(), hydrating)
     }
   }
