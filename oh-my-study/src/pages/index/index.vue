@@ -1,6 +1,13 @@
 <template>
     <div class="layout-sidebar">
-        <div class="bottom" @click="handleUpdate">欢迎您的到来~</div>
+        <div class="btn" @click="handleUpdate">
+            <div class="g-container">
+                <div class="word">Hello World!</div>
+                <div class="word">13</div>
+                <div class="word">Pro</div>
+                <div class="word">强的很！</div>
+            </div>
+        </div>
     </div>
     <div class="layout-content">
         <css-doodle>
@@ -50,11 +57,49 @@ onUnmounted(() => {
     (headElement as Element).classList.remove('static');
 });
 </script>
-<!-- <script>
-export default {
-    name: 'HomeIndex',
-};
-</script> -->
+<style lang="scss">
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+
+$speed: 8s;
+$wordCount: 4;
+
+.g-container {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    // background: #000;
+    font-family: 'Montserrat', sans-serif;
+    color: #000;
+    font-size: 120px;
+    filter: contrast(15);
+}
+.word {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    animation: change $speed infinite ease-in-out;
+
+    @for $i from 0 to $wordCount {
+        &:nth-child(#{$i + 1}) {
+            animation-delay: ($speed / ($wordCount + 1) * $i) - $speed;
+        }
+    }
+}
+@keyframes change {
+    0%,
+    5%,
+    100% {
+        filter: blur(0px);
+        opacity: 1;
+    }
+    50%,
+    80% {
+        filter: blur(80px);
+        opacity: 0;
+    }
+}
+</style>
 <style lang="less">
 .static {
     // position: static;
@@ -86,7 +131,7 @@ export default {
     z-index: 1;
     transition: all 0.3s;
 }
-.bottom {
+.btn {
     position: absolute;
     top: 50%;
     left: 50%;

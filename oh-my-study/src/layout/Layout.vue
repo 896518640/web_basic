@@ -77,7 +77,9 @@
                     <div class="menu-item">
                         <router-link to="demo"> 案例 </router-link>
                     </div>
-                    <div class="menu-item">教育</div>
+                    <div class="menu-item">
+                        <router-link to="study">学习</router-link>
+                    </div>
                     <div class="menu-item">心得</div>
                     <div class="menu-item">user</div>
                 </div>
@@ -92,12 +94,9 @@
     </div>
 </template>
 <script setup lang="ts">
-import { ref } from 'vue';
 import { RouterView } from 'vue-router';
 import { useThemeStore } from '@/store/theme';
 type themeType = 'dark' | 'light';
-
-const current = ref<string[]>(['mail']);
 const themeValue = useThemeStore();
 document.body.classList.toggle(themeValue.theme);
 

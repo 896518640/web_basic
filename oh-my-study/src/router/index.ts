@@ -24,7 +24,26 @@ const routes: Array<RouteRecordRaw> = [
         meta: {
             title: '小案例',
         },
+        redirect: '/demo/demo1/1',
         component: () => import('@/pages/demo/index.vue'),
+        children: [
+            {
+                path: 'demo1/:id',
+                component: () => import('@/pages/demo/demo1/index.vue'),
+            },
+            {
+                path: 'demo2/:id',
+                component: () => import('@/pages/demo/demo2/index.vue'),
+            },
+        ],
+    },
+    {
+        path: '/study',
+        name: 'Study',
+        meta: {
+            title: '前端导航',
+        },
+        component: () => import('@/pages/study/index.vue'),
     },
 ];
 
