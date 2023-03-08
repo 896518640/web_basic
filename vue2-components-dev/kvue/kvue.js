@@ -25,13 +25,30 @@ function defineReactive(obj,key,val) {
         }
     })
 }
+
+//1. 获取数组原型
+const arrayProto = Array.prototype
+//2. 备份一份原型
+const copyProto = Object.create(arrayProto)
+//3. 方法重写
+['push','pop','unshift','shift','slice','sort','reverse'].forEach(method => {
+    copyProto[method] = function () {
+        copyProto[method].call(this,arguments)
+    }
+})
+
 // 遍历传入obj的所有属性 执行响应式处理
 function Observe(obj) {
     // 首先判断obj 是对象
     if(typeof obj !== 'object' || obj === null) {
         return obj
     }
-    Object.keys(obj).forEach(key=> defineReactive(obj,key,obj[key]))
+    if(Array.isArray(obj)) {
+        
+    }else {
+        Object.keys(obj).forEach(key=> defineReactive(obj,key,obj[key]))
+    }
+    
 }
 
 // 动态新增一个属性

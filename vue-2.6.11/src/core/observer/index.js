@@ -40,10 +40,13 @@ export class Observer {
   vmCount: number; // number of vms that have this object as root $data
 
   constructor (value: any) {
+    // 2. 此处的dep  目的何在？
+    // 如果使用 Vue.set/delete 添加或删除属性 负责通知更新
     this.value = value
     this.dep = new Dep()
     this.vmCount = 0
     def(value, '__ob__', this)
+    // 1. 先分辨传入对象的类型
     if (Array.isArray(value)) {
       if (hasProto) {
         protoAugment(value, arrayMethods)
@@ -61,6 +64,7 @@ export class Observer {
    * getter/setters. This method should only be called when
    * value type is Object.
    */
+  // 对象进行响应式处理
   walk (obj: Object) {
     const keys = Object.keys(obj)
     for (let i = 0; i < keys.length; i++) {
@@ -71,6 +75,7 @@ export class Observer {
   /**
    * Observe a list of Array items.
    */
+  // 数组进行响应式处理
   observeArray (items: Array<any>) {
     for (let i = 0, l = items.length; i < l; i++) {
       observe(items[i])
@@ -111,7 +116,10 @@ export function observe (value: any, asRootData: ?boolean): Observer | void {
   if (!isObject(value) || value instanceof VNode) {
     return
   }
+  // Observer 作用
+  // 将传入的value  做响应式处理
   let ob: Observer | void
+  // 若 做过响应式处理 则直接返回__ob__
   if (hasOwn(value, '__ob__') && value.__ob__ instanceof Observer) {
     ob = value.__ob__
   } else if (
@@ -121,6 +129,7 @@ export function observe (value: any, asRootData: ?boolean): Observer | void {
     Object.isExtensible(value) &&
     !value._isVue
   ) {
+    // 初始化传入需要相应是的对象
     ob = new Observer(value)
   }
   if (asRootData && ob) {
@@ -139,6 +148,7 @@ export function defineReactive (
   customSetter?: ?Function,
   shallow?: boolean
 ) {
+  // 首先创建一个和key 一一对应的dep
   const dep = new Dep()
 
   const property = Object.getOwnPropertyDescriptor(obj, key)
@@ -152,17 +162,22 @@ export function defineReactive (
   if ((!getter || setter) && arguments.length === 2) {
     val = obj[key]
   }
-
+  // 会返回一个ob实例
   let childOb = !shallow && observe(val)
   Object.defineProperty(obj, key, {
     enumerable: true,
     configurable: true,
     get: function reactiveGetter () {
       const value = getter ? getter.call(obj) : val
+      // 如果存在 说明此次调用触发者是一个Watcher 实例
+      // n:dep - n:Watcher
       if (Dep.target) {
+        // 简历ob 内部 dep 和 dep.Target 之间的依赖关系
         dep.depend()
+        // ob实例
         if (childOb) {
           childOb.dep.depend()
+          // 如果数组 那么数组内部都要做相同的处理
           if (Array.isArray(value)) {
             dependArray(value)
           }

@@ -38,12 +38,15 @@ export default {
 <style lang="less">
 .record-item {
     width: 750px;
-    height: 152px;
+    height: 50px;
     padding: 40px;
     display: flex;
+    overflow: hidden;
     align-items: center;
     justify-content: space-between;
     border-bottom: 1px solid #e5e5e5;
+    background: #FFCFBB;
+    margin-bottom: 20px;
     .item-info {
         width: 229px;
         height: 72px;
